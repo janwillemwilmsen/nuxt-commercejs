@@ -1,9 +1,7 @@
 <template>
   <v-form ref="billing" class="px-1">
     <v-card class="pa-2" elevation="20">
-      <v-card-title primary-title>
-        Billing Details
-      </v-card-title>
+      <v-card-title primary-title> Billing Details </v-card-title>
       <v-row>
         <v-col class="py-0">
           <v-text-field
@@ -158,8 +156,8 @@ export default {
   props: {
     cart: {
       type: Object,
-      default: () => {}
-    }
+      default: () => {},
+    },
   },
   data: () => ({
     countries: locale,
@@ -178,22 +176,23 @@ export default {
     cardZip: '94103',
     rules: {
       email: (v) => {
-        const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        const pattern =
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
         return pattern.test(v) || 'Invalid e-mail.'
       },
-      required: (v) => !!v || 'Required.'
-    }
+      required: (v) => !!v || 'Required.',
+    },
   }),
   computed: {
     ...mapGetters({
-      token: 'token'
-    })
+      token: 'token',
+    }),
   },
   methods: {
     shippingOpts(tokenID) {
       this.$commerce.checkout
         .getShippingOptions(tokenID, {
-          country: this.country.code
+          country: this.country.code,
         })
         .then((r) => {
           this.$emit('shippingCost', r[0].price.formatted)
@@ -207,7 +206,7 @@ export default {
 
       for (const i of this.cart.line_items) {
         lineItems[i.id] = {
-          quantity: i.quantity
+          quantity: i.quantity,
         }
       }
       // Capture checkout data
@@ -216,7 +215,7 @@ export default {
         customer: {
           firstname: this.firstName,
           lastname: this.lastName,
-          email: this.email
+          email: this.email,
         },
         shipping: {
           name: `${this.firstName} ${this.lastName}`,
@@ -224,10 +223,10 @@ export default {
           town_city: this.city,
           county_state: this.region,
           postal_zip_code: this.postalCode,
-          country: this.country.code
+          country: this.country.code,
         },
         fulfillment: {
-          shipping_method: this.shipMethod
+          shipping_method: this.shipMethod,
         },
         payment: {
           gateway: 'test_gateway',
@@ -236,9 +235,9 @@ export default {
             expiry_month: date[0],
             expiry_year: date[1],
             cvc: this.cvc,
-            postal_zip_code: this.cardZip
-          }
-        }
+            postal_zip_code: this.cardZip,
+          },
+        },
       }
 
       this.$store
@@ -255,14 +254,15 @@ export default {
           pattern = /^([0-9]{5})(?:[-\s]*([0-9]{4}))?$/
           break
         case 'CA':
-          pattern = /^[abceghjklmnprstvxy][0-9][abceghjklmnprstvwxyz]\s?[0-9][abceghjklmnprstvwxyz][0-9]$/i
+          pattern =
+            /^[abceghjklmnprstvxy][0-9][abceghjklmnprstvwxyz]\s?[0-9][abceghjklmnprstvwxyz][0-9]$/i
           break
         case 'MX':
           pattern = /^\\d{5}$/
           break
       }
       return pattern.test(v) || `Invalid Zip Code for Country: ${code}`
-    }
-  }
+    },
+  },
 }
 </script>

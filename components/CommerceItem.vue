@@ -1,7 +1,10 @@
 <template>
   <v-card class="mb-5 pt-3" elevation="20" height="400" width="350">
-    <v-hover v-slot:default="{ hover }">
-      <v-img :src="product.media.source" aspect-ratio="1" contain>
+        <p>{{ product.id }}</p>
+        <p>{{ product.image.url }}</p>
+    <v-hover v-slot:default="{ hover }">  
+    <v-img :src="product.image.url" aspect-ratio="1" contain>
+        
         <v-overlay
           :value="hover"
           absolute
@@ -41,8 +44,8 @@
             Sold Out
           </v-btn>
         </v-overlay>
-      </v-img>
-    </v-hover>
+      </v-img>  
+      </v-hover>  
     <v-card-actions class="font-weight-medium">
       <span>{{ product.name }}</span>
       <span

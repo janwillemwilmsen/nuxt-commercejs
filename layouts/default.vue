@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <div :style="{ backgroundImage: `url(${backgroundUrl})`, height: '100%' }">
-      <v-content>
+      <v-main>
         <v-toolbar>
           <v-toolbar-title>
             <a class="title toolbar-title" href="/">
@@ -29,7 +29,7 @@
         <v-container>
           <nuxt />
         </v-container>
-      </v-content>
+      </v-main>
     </div>
   </v-app>
 </template>
