@@ -2,7 +2,7 @@
   <v-layout column justify-center align-center>
     <v-flex xs12 sm8 md6>
       <v-col class="text-center ma-5">
-        <span class="display-1">Demo Merchant</span>
+        <span class="display-1">Demo Merchant test</span>
       </v-col>
 
       <v-row>
