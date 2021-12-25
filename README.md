@@ -371,3 +371,4 @@ This guide continues from [Creating a Checkout with Commerce.js SDK and Nuxt.js]
 ## Authors
 
 **ElijahKotyluk** - [Github](https://github.com/ElijahKotyluk)
+# nuxt-commercejs
