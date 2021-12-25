@@ -5,7 +5,7 @@
         <v-toolbar>
           <v-toolbar-title>
             <a class="title toolbar-title" href="/">
-              Demo Merchant
+              Demo Merchant testing 
             </a>
           </v-toolbar-title>
           <v-spacer></v-spacer>
